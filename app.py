@@ -1,24 +1,24 @@
 from flask import Flask, render_template, request, jsonify, redirect, jsonify, url_for, redirect, send_from_directory
 import os
 # import numpy as np
-# import pickle
+import pickle
 # import cv2
 # from PIL import Image
 # import warnings
 # warnings.simplefilter("ignore", DeprecationWarning)
 
 app = Flask(__name__)
-# model_svc = pickle.load(open('./models/svc_model',"rb"))
-# model_knc = pickle.load(open('./models/KNeighborsClassifier_model','rb'))
-# model_bc = pickle.load(open('./models/BaggingClassifier_model','rb'))
-# model_rfc = pickle.load(open('./models/RandomForestClassifier_model','rb'))
-# model_dtc = pickle.load(open('./models/DecisionTreeClassifier_model','rb'))
-# model_etc = pickle.load(open('./models/ExtraTreeClassifier_model',"rb"))
-# model_gnb = pickle.load(open('./models/GaussianNB_model','rb'))
-# model_gbc = pickle.load(open('./models/GradienBoostingClassifier_model','rb'))
-# model_lr = pickle.load(open('./models/LogisticRegression_model','rb'))
-# model_sgdc = pickle.load(open('./models/SGDClassifier_model','rb'))
-# alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+model_svc = pickle.load(open('./models/svc_model',"rb"))
+model_knc = pickle.load(open('./models/KNeighborsClassifier_model','rb'))
+model_bc = pickle.load(open('./models/BaggingClassifier_model','rb'))
+model_rfc = pickle.load(open('./models/RandomForestClassifier_model','rb'))
+model_dtc = pickle.load(open('./models/DecisionTreeClassifier_model','rb'))
+model_etc = pickle.load(open('./models/ExtraTreeClassifier_model',"rb"))
+model_gnb = pickle.load(open('./models/GaussianNB_model','rb'))
+model_gbc = pickle.load(open('./models/GradienBoostingClassifier_model','rb'))
+model_lr = pickle.load(open('./models/LogisticRegression_model','rb'))
+model_sgdc = pickle.load(open('./models/SGDClassifier_model','rb'))
+alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
 
 # def preprocessImage(img):
 #     im = img
