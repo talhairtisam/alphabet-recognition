@@ -33,6 +33,9 @@ def preprocessImage(img):
     r_im = r_im.reshape(1,-1)
     return r_im
 
+app.add_url_rule('/favicon.ico',
+                 redirect_to=url_for('static', filename='favicon.ico'))
+
 @app.route('/')
 def index():
     return render_template('index.html', errorM = 'fade')
