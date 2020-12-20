@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, jsonify, redirect, jsonify, url_for, redirect, send_from_directory
+import os
 # import numpy as np
 # import pickle
 # import cv2
@@ -6,7 +7,7 @@ from flask import Flask, render_template, request, jsonify, redirect, jsonify, u
 # import warnings
 # warnings.simplefilter("ignore", DeprecationWarning)
 
-# app = Flask(__name__)
+app = Flask(__name__)
 # model_svc = pickle.load(open('./models/svc_model',"rb"))
 # model_knc = pickle.load(open('./models/KNeighborsClassifier_model','rb'))
 # model_bc = pickle.load(open('./models/BaggingClassifier_model','rb'))
