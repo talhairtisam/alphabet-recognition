@@ -1,0 +1,71 @@
+body{
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+}
+#cards{
+    margin-top: 100px;
+    width: 60%;
+}
+#left-card{
+    background: rgb(247, 223, 227,0.7);
+    
+}
+
+#right-card{
+    color: white;
+    background: rgb(0, 0, 0,0.7);
+}
+#salam{
+    color: red;
+}
+#left-card h3,ul{
+    text-align: left;
+}
+
+#left-card button{
+    width: 200px;
+}
+
+#upload-image{
+    color: rgb(108, 108, 196);
+}
+#upload {
+    opacity: 0;
+}
+
+#upload-label {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
+}
+
+#img-container{
+    height: 170px;
+}
+
+.modal-width{
+    width: 850px;
+}
+#imgError{
+    margin-top: 5px;
+}
+#resultmodal img{
+    margin-left: 100px;
+}
+#resultmodal select{
+    margin-left: 65px;
+}
+
+#prediction h1{
+    font-size: 90px;
+    font-weight: bolder;
+    color: red;
+    margin-left: 145px;
+}
+
+#instructions{
+    height: 400px;
+    overflow-y: scroll;
+}

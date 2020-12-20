@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A to Z Character Recognition</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static',filename='./script/script.js')}}"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static',filename='./style/style.css')}}" />
+    
+</head>
+<body class="fluid-container" style="background-image: url(../static/image/bg_body.jpg);">
+    <div class="row" id="cards">
+      <div class="card col-lg-7 text-center" id="left-card">
+        <div  class="m-5">
+          <h1>A-Z Character Recognition</h1>
+          <br>
+          <h3><strong id="salam">Assalam-o-Alikum!</strong></h3>
+          <br>
+          <br>
+
+          <ul>
+            <li>
+              <strong>The aim of this project is that the machine recognize the Alphabet A-Z from the image we provide it.</strong>
+            </li>
+          </ul>
+          <br>
+          <br>
+          <button class="btn btn-primary mt-4" id="instructionButton"><strong>Read Instructions</strong></button>
+        </div>
+          
+      </div>
+
+      <div class="card col-lg-5 text-center" id="right-card">
+        <div class="m-5">
+          <h3><strong id="upload-image">UPLOAD IMAGE</strong></h3>
+          <br>
+          <form id="send" action="/" method="POST" enctype = 'multipart/form-data'>
+            <div id="img-container">
+              <img src="https://res.cloudinary.com/mhmd/image/upload/v1564991372/image_pxlho1.svg" alt="" width="150" class="mb-4" id="imageResult">
+            </div>
+            <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
+              <input id="upload" name="image" type="file" onchange="readURL(this);" class="form-control border-0">
+              <label id="upload-label" for="upload" class="font-weight-light text-muted">Image</label>
+              <div class="input-group-append">
+                  <label for="upload" class="btn btn-light m-0 rounded-pill px-4"> <i class="fa fa-cloud-upload mr-2 text-muted"></i><small class="text-uppercase font-weight-bold text-muted">Choose Image</small></label>
+              </div>
+            </div>
+            <button class="btn btn-secondary mt-5 p-3 px-5" id="recognize"><strong>RECOGNIZE</strong></button>
+            {% set mm = '%s' % errorM %}
+            <p class= {{ mm }} id="imgError">Please upload image</p>
+          </form>
+          
+        </div>
+       
+      </div>
+    </div>
+
+
+    <!--It is instruction modal-->
+    <div class="modal fade" id="instructionmodal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><strong>Instructions</strong></h5>
+                </div>
+                <div class="modal-body">
+                  <div id="instructions">
+                    <ol>
+                      <li>
+                        Take Image of Alphabet (A-Z) in 28x28 dimension. i.e. 
+                        <img src="{{ url_for('static',filename='./image/A.png')}}" alt="input picture" width="150">
+                      </li>
+                      <h3><strong>Upload Image:</strong></h3>
+                      <li>
+                        First Choose Image <br>
+                        <img src="{{ url_for('static',filename='./image/choose_file.JPG')}}" alt="input picture" width="150">
+                      </li>
+                      <li>
+                        Select Image and click open<br> 
+                        <img src="{{ url_for('static',filename='./image/selectImage.JPG')}}" alt="input picture" width="400">
+                      </li>
+                      <li>
+                        Press Recognize Button<br>
+                         <img src="{{ url_for('static',filename='./image/recognize.JPG')}}" alt="input picture" width="150">
+                      </li>
+                      <li>
+                        Choose model name from selectionBox to see result<br>
+                         <img src="{{ url_for('static',filename='./image/chooseModel.png')}}" alt="input picture" width="150">
+                      </li>
+                      <li>
+                        See Result<br>
+                         <img src="{{ url_for('static',filename='./image/seeResult.JPG')}}" alt="input picture" width="150">
+                      </li>
+                    </ol>
+                  </div>                 
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--It is Result modal-->
+    <div class="modal fade" id="resultmodal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title"><strong>Result</strong></h5>
+              </div>
+              <div class="modal-body">
+                  <div class="m-5">
+                  <select name="Result" id="model_name" class="btn btn-danger">
+                      <option  selected disabled value="">Select Model</option>
+                      {% for option in prediction %}
+                      <option value="{{option[1]}}">{{option[0]}}</option>
+                      {% endfor %}
+                  </select>
+                  <br>
+                  <br>
+                  <div id="toggle"></div>
+                  <div id="prediction">
+                        
+                  </div>
+                  
+                  </div>
+                  
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+              </div>
+          </div>
+      </div>
+   </div> 
+</body>
+<div class="fade" id="showM"> {{show}} </div>
+
+</html>
