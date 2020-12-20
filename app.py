@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify, redirect, jsonify
+from flask import Flask, render_template, request, jsonify, redirect, jsonify, url_for, redirect, send_from_directory
 import numpy as np
 import pickle
 import cv2
@@ -33,8 +33,10 @@ def preprocessImage(img):
     r_im = r_im.reshape(1,-1)
     return r_im
 
-app.add_url_rule('/favicon.ico',
-                 redirect_to=url_for('static', filename='favicon.ico'))
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                               'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 @app.route('/')
 def index():
