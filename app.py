@@ -1,9 +1,9 @@
 from flask import Flask, render_template, request, jsonify, redirect, jsonify, url_for, redirect, send_from_directory
 import os
-# import numpy as np
+import numpy as np
 import pickle
 # import cv2
-# from PIL import Image
+from PIL import Image
 # import warnings
 # warnings.simplefilter("ignore", DeprecationWarning)
 
