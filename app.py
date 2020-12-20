@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, jsonify, redirect, jsonify, u
 import os
 import numpy as np
 import pickle
-# import cv2
+import cv2
 from PIL import Image
 # import warnings
 # warnings.simplefilter("ignore", DeprecationWarning)
